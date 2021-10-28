@@ -1,6 +1,7 @@
 const getText = document.querySelector("#getText");
 const output = document.querySelector("#output");
 const getUsers = document.querySelector("#get-users");
+const getPosts = document.querySelector("#get-posts");
 
 function getTextFun() {
     fetch("sample.txt")
@@ -31,5 +32,26 @@ function getUsersFun() {
         })
 }
 
+function getPostsFun() {
+    fetch("https://jsonplaceholder.typicode.com/posts")
+        .then(res => res.json())
+        .then((data) => {
+            // console.log(data);
+            let resultOutput = `<h2>Posts</h2>`;
+            data.forEach(function (post) {
+                resultOutput += `
+
+                <div>
+                    <h3>${post.id}</h3>             
+                    <h3>${post.title}</h3>                   
+                    <p>${post.body}</p>
+                </div>
+            `;
+            });
+            output.innerHTML = resultOutput;
+        })
+}
+
+getPosts.addEventListener("click", getPostsFun)
 getUsers.addEventListener("click", getUsersFun)
 getText.addEventListener("click", getTextFun)
