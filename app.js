@@ -2,6 +2,9 @@ const getText = document.querySelector("#getText");
 const output = document.querySelector("#output");
 const getUsers = document.querySelector("#get-users");
 const getPosts = document.querySelector("#get-posts");
+const formIp = document.querySelector("#addPost");
+const titleIp = document.querySelector("#title");
+const bodyIp = document.querySelector("#body");
 
 function getTextFun() {
     fetch("sample.txt")
@@ -52,6 +55,34 @@ function getPostsFun() {
         })
 }
 
+function addPost(e) {
+    e.preventDefault();
+    let title = titleIp.value;
+    let body = bodyIp.value;
+    fetch("https://jsonplaceholder.typicode.com/posts", {
+        method: "POST",
+        headers: {
+            "Accept": "application/json, text/plain, */*",
+            "Content-Type": "application/json "
+        },
+        body: JSON.stringify(
+            {
+                title: title,
+                body: body
+            }
+        )
+            .then((res) => res.json())
+            .then((data) => console.log(data))
+    })
+}
+
+
+
+
+
+
+
+formIp.addEventListener("submit", addPost)
 getPosts.addEventListener("click", getPostsFun)
 getUsers.addEventListener("click", getUsersFun)
 getText.addEventListener("click", getTextFun)

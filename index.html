@@ -1,19 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FETCH API</title>
 </head>
+
 <body>
 
     <button id="getText">Get Text - Text File</button><br><br><br>
     <button id="get-users">GET Using - JSON file</button><br><br><br>
     <button id="get-posts">GET Using - API</button>
-
+    <hr>
     <div id="output"></div>
+    <form id="addPost">
+        <div>
+            <input type="text" id="title" placeholder="add title">
+            <textarea id="body" placeholder="add body"></textarea>
+            <input type="submit" value="submit" >
+        </div>
+    </form>
+    
 
-    <script src="./app.js" ></script>
+    <script src="./app.js"></script>
 </body>
+
 </html>
