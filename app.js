@@ -5,6 +5,7 @@ const getPosts = document.querySelector("#get-posts");
 const formIp = document.querySelector("#addPost");
 const titleIp = document.querySelector("#title");
 const bodyIp = document.querySelector("#body");
+const resultPost = document.querySelector("#resultPost")
 
 function getTextFun() {
     fetch("sample.txt")
@@ -71,9 +72,12 @@ function addPost(e) {
                 body: body
             }
         )
-            .then((res) => res.json())
-            .then((data) => console.log(data))
+
     })
+        .then((res) => res.json())
+        .then((data) => {
+            resultPost.innerHTML = JSON.stringify(data);
+        })
 }
 
 
