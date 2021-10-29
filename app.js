@@ -21,13 +21,13 @@ function getUsersFun() {
         .then(res => res.json())
         .then((data) => {
             // console.log(data);
-            let resultOutput = `<h2>Users</h2>`;
+            let resultOutput = `<h2 class="mb-4" >Users</h2>`;
             data.forEach(function (user) {
                 resultOutput += `
-                    <ul>
-                    <li>ID: ${user.id}</li>
-                    <li>NAME: ${user.name}</li>
-                    <li>EMAIL: ${user.email}</li>
+                    <ul class="list-group mb-3" >
+                    <li class="list-group-item" >ID: ${user.id}</li>
+                    <li class="list-group-item" >NAME: ${user.name}</li>
+                    <li class="list-group-item" >EMAIL: ${user.email}</li>
                     </ul>
                 `;
             });
@@ -41,12 +41,11 @@ function getPostsFun() {
         .then(res => res.json())
         .then((data) => {
             // console.log(data);
-            let resultOutput = `<h2>Posts</h2>`;
+            let resultOutput = `<h2 class="mb-4">Posts</h2>`;
             data.forEach(function (post) {
                 resultOutput += `
 
-                <div>
-                    <h3>${post.id}</h3>             
+                <div class="card card-body mb-3">            
                     <h3>${post.title}</h3>                   
                     <p>${post.body}</p>
                 </div>
@@ -76,6 +75,7 @@ function addPost(e) {
     })
         .then((res) => res.json())
         .then((data) => {
+            console.log(data)
             resultPost.innerHTML = JSON.stringify(data);
         })
 }
